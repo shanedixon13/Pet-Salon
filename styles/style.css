@@ -72,6 +72,11 @@ div.input-container label {
 .btn-register {
 	background-color: rgb(22, 55, 107);
 	color: white;
+	margin-left: 17rem;
+}
+.btn-register:hover {
+	background-color: darkgreen;
+	color: var(--secondary);
 }
 
 /*#pets {
@@ -97,4 +102,10 @@ table button:hover {
 .pets-table {
 	margin-top: 3rem;
 	border: 3px solid grey;
+}
+footer {
+	background-color: grey;
+	height: 2rem;
+	margin-top: 0;
+	padding: 0;
 }
