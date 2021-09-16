@@ -41,6 +41,20 @@
 					<input type="text" id="petGender" />
 				</div>
 				<div class="input-container">
+					<label>Pet Type:</label>
+					<select id="petType">
+						<option value="" disabled selected>
+							--Select an Option--
+						</option>
+						<option value="Dog">Dog</option>
+						<option value="Cat">Cat</option>
+						<option value="Bird">Bird</option>
+						<option value="Other">
+							Other: Please specify in breed block.
+						</option>
+					</select>
+				</div>
+				<div class="input-container">
 					<label>Breed:</label>
 					<input type="text" id="petBreed" />
 				</div>
@@ -50,9 +64,9 @@
 						<option value="" disabled selected>
 							--Select an Option--
 						</option>
-						<option value="shower">Shower</option>
-						<option value="nails">Nails Cut</option>
-						<option value="grooming">Grooming</option>
+						<option value="Shower">Shower</option>
+						<option value="Nails Cut">Nails Cut</option>
+						<option value="Grooming">Grooming</option>
 					</select>
 				</div>
 				<div class="input-container">
@@ -63,18 +77,22 @@
 					<label>Phone:</label>
 					<input type="text" id="petPhone" />
 				</div>
-
-				<button class="btn btn-register" onclick="register();">
-					Register
-				</button>
+				<div class="alert-section">
+					<button class="btn btn-register">Register</button>
+					<p id="alert" class="hide">A pet was registered.</p>
+				</div>
 			</div>
-			<div id="" class="container"></div>
+			<div class="search-container container">
+				<input type="search" id="searchInput" />
+				<button class="btn btn-search">Search</button>
+			</div>
 			<table class="table table-striped container pets-table">
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Age</th>
 						<th>Gender</th>
+						<th>Pet Type</th>
 						<th>Breed</th>
 						<th>Service</th>
 						<th>Owner</th>
