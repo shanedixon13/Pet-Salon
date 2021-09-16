@@ -32,10 +32,11 @@ console.log(task3);*/
 
 var counter = 0;
 class Pet {
-	constructor(name, age, gender, breed, service, owner, phone) {
+	constructor(name, age, gender, type, breed, service, owner, phone) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
+		this.type = type;
 		this.breed = breed;
 		this.service = service;
 		this.owner = owner;
@@ -48,6 +49,7 @@ var scooby = new Pet(
 	"Scooby",
 	60,
 	"Male",
+	"Dog",
 	"Dane",
 	"Grooming",
 	"Shaggy",
@@ -58,6 +60,7 @@ var scrappy = new Pet(
 	"Scrappy",
 	50,
 	"Male",
+	"Dog",
 	"Mixed",
 	"Nails Cut",
 	"Shaggy",
@@ -68,6 +71,7 @@ var maple = new Pet(
 	"Maple",
 	3,
 	"Female",
+	"Dog",
 	"Mixed",
 	"Full Service",
 	"Shane",
@@ -79,6 +83,7 @@ var tweety = new Pet(
 	60,
 	"Male",
 	"Bird",
+	"Songbird",
 	"Nails Cut",
 	"Bugs Bunny",
 	"999-999-9999"
@@ -88,31 +93,43 @@ salon.pets.push(tweety);
 var txtName = document.getElementById("petName");
 var txtAge = document.getElementById("petAge");
 var txtGender = document.getElementById("petGender");
+var txtType = document.getElementById("petType");
 var txtBreed = document.getElementById("petBreed");
 var txtService = document.getElementById("petService");
 var txtOwner = document.getElementById("petOwner");
 var txtPhone = document.getElementById("petPhone");
 
 function register() {
-	var thePet = new Pet(
-		txtName.value,
-		txtAge.value,
-		txtGender.value,
-		txtBreed.value,
-		txtService.value,
-		txtOwner.value,
-		txtPhone.value
-	);
-	console.log(thePet);
-	salon.pets.push(thePet);
-	clear();
-	displayTable();
+	if (txtName.value === "" || txtPhone.value === "") {
+		alert("Please enter the required fields.");
+	} else {
+		var thePet = new Pet(
+			txtName.value,
+			txtAge.value,
+			txtGender.value,
+			txtType.value,
+			txtBreed.value,
+			txtService.value,
+			txtOwner.value,
+			txtPhone.value
+		);
+		console.log(thePet);
+		salon.pets.push(thePet);
+		clear();
+		displayTable();
+		var alertElement = document.getElementById("alert");
+		alertElement.classList.remove("hide");
+		setTimeout(function () {
+			alertElement.classList.add("hide");
+		}, 3000);
+	}
 }
 
 function clear() {
 	txtName.value = ""; //clearing the input
 	txtAge.value = "";
 	txtGender.value = "";
+	txtType.value = "";
 	txtBreed.value = "";
 	txtService.value = "";
 	txtOwner.value = "";
@@ -145,6 +162,7 @@ function displayTable() {
 		<td class="table-content">🐾${salon.pets[i].name}</td>     
 		<td class="table-content">${salon.pets[i].age}</td>
 		<td class="table-content">${salon.pets[i].gender}</td>
+		<td class="table-content">${salon.pets[i].type}</td>
 		<td class="table-content">${salon.pets[i].breed}</td>
 		<td class="table-content">${salon.pets[i].service}</td>
 		<td class="table-content">${salon.pets[i].owner}</td>
@@ -168,9 +186,27 @@ function deletePet(id) {
 	}
 	salon.pets.splice(indexDelete, 1); //delete element from array
 }
+function searchPet() {
+	//by pet name
+	var txtSearch = document.getElementById("searchInput").value;
+	var searchString = txtSearch.toLowerCase();
+	//travel the array
+	salon.pets.forEach((pet) => {
+		//compare the txtsearch with all pet names
+		if (pet.name.toLowerCase() === searchString) {
+			//highlight the result
+			document.getElementById(pet.id).classList.add("highlight");
+			searchInput.value = "";
+		} else {
+			document.getElementById(pet.id).classList.remove("highlight");
+		}
+	});
+}
 function init() {
 	console.log("app.js");
 	displayTable();
 	//hook events
+	document.querySelector(".btn-register").addEventListener("click", register);
+	document.querySelector(".btn-search").addEventListener("click", searchPet);
 }
 window.onload = init;
