@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="styles/style.css" />
+		<title>Register</title>
+	</head>
+	<body>
+		<header>
+			<h1>The Fashion Pet</h1>
+			<nav>
+				<a href="index.html">Home</a>
+				<a href="about.html">About</a>
+				<a href="services.html">Services</a>
+				<a href="register.html">Register</a>
+			</nav>
+		</header>
+
+		<main>
+			<h2>Registration</h2>
+			<!--name,age,gender,breed,service,owner,phone-->
+			<div class="container">
+				<div class="input-container">
+					<label>Pet Name:</label>
+					<input type="text" id="petName" />
+				</div>
+				<div class="input-container">
+					<label>Age:</label>
+					<input type="number" id="petAge" />
+				</div>
+				<div class="input-container">
+					<label>Gender:</label>
+					<input type="text" id="petGender" />
+				</div>
+				<div class="input-container">
+					<label>Pet Type:</label>
+					<select id="petType">
+						<option value="" disabled selected>
+							--Select an Option--
+						</option>
+						<option value="Dog">Dog</option>
+						<option value="Cat">Cat</option>
+						<option value="Bird">Bird</option>
+						<option value="Other">
+							Other: Please specify in breed block.
+						</option>
+					</select>
+				</div>
+				<div class="input-container">
+					<label>Breed:</label>
+					<input type="text" id="petBreed" />
+				</div>
+				<div class="input-container">
+					<label>Service:</label>
+					<select id="petService">
+						<option value="" disabled selected>
+							--Select an Option--
+						</option>
+						<option value="Shower">Shower</option>
+						<option value="Nails Cut">Nails Cut</option>
+						<option value="Grooming">Grooming</option>
+					</select>
+				</div>
+				<div class="input-container">
+					<label>Owner:</label>
+					<input type="text" id="petOwner" />
+				</div>
+				<div class="input-container">
+					<label>Phone:</label>
+					<input type="text" id="petPhone" />
+				</div>
+				<div class="alert-section">
+					<button class="btn btn-register">Register</button>
+					<p id="alert" class="hide">A pet was registered.</p>
+				</div>
+			</div>
+			<div class="search-container container">
+				<input type="search" id="searchInput" />
+				<button class="btn btn-search">Search</button>
+			</div>
+			<table class="table table-striped container pets-table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Gender</th>
+						<th>Pet Type</th>
+						<th>Breed</th>
+						<th>Service</th>
+						<th>Owner</th>
+						<th>Phone</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="pets"></tbody>
+			</table>
+		</main>
+
+		<footer><p>All Copyrights Reserved &copy 2021 Shane Dixon</p></footer>
+		<script src="scripts/app.js"></script>
+	</body>
+</html>
