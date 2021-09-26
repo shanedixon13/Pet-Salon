@@ -193,7 +193,10 @@ function searchPet() {
 	//travel the array
 	salon.pets.forEach((pet) => {
 		//compare the txtsearch with all pet names
-		if (pet.name.toLowerCase() === searchString) {
+		if (
+			pet.name.toLowerCase() === searchString ||
+			pet.owner.toLowerCase() === searchString
+		) {
 			//highlight the result
 			document.getElementById(pet.id).classList.add("highlight");
 			searchInput.value = "";
